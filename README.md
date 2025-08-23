@@ -24,7 +24,7 @@
 
 ```bash
 # 1. โคลนโปรเจกต์
-git clone https://github.com/username/money-tracker.git
+git clone https://github.com/ApirakGGG/KEEPTANG.git
 cd money-tracker
 
 # 2. ติดตั้ง dependencies
