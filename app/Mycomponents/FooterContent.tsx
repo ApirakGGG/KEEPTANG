@@ -32,7 +32,7 @@ const FooterContent = () => {
         >
           {/* 3D footer */}
           <PinContainer title="KEEPTANG > เก็บตัง">
-            <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 md:w-[40vh] h-[15rem] rounded-xl">
+            <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 md:w-[30vh] h-[10rem] rounded-xl">
               <div className="flex flex-col justify-center items-center text-base !m-0 !p-0 font-normal">
                 <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-base text-slate-800 dark:text-white">
                   {item.text}
