@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import Image from "next/image";
 import FooterContent from "./Mycomponents/FooterContent";
 import { currentUser } from "@clerk/nextjs/server";
