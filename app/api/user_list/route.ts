@@ -1,7 +1,8 @@
 import { clerkClient, currentUser } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-export async function GET() {
+
+export async function GET() : Promise<Response> {
   try {
     const clerk = await clerkClient();
     const user = await currentUser();
@@ -9,13 +10,13 @@ export async function GET() {
       return NextResponse.json({ error: "No user found" }, { status: 404 });
     }
 
-    const usersList = await clerk.users.getUserList({
-      limit: 50, // จำนวน user ที่ต้องการดึง
+     const usersList = await clerk.users.getUserList({
+      limit: 50,
     });
     // console.log("User_List", usersList);
-    return NextResponse.json(usersList);
+    return NextResponse.json(usersList) as unknown as Response;
   } catch (err) {
-    console.error("error" ,err)
+    console.error("error", err);
     return NextResponse.json({ err: "Failed to fetch users" }, { status: 500 });
   }
 }
