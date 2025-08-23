@@ -24,6 +24,7 @@ export default async function Dashboard() {
     redirect("/wizard");
   }
 
+
   return (
     <div className="h-full bg-background">
       <div className="border-b bg-card">

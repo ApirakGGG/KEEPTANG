@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
@@ -34,8 +33,9 @@ export default function CategoryPicker({ type }: Props) {
 
   const selectedCategories = catagoriesQuery.data?.find(
     (category: Category) => category.name === value,
-
   );
+
+  console.log("selectedCategories", selectedCategories)
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>

@@ -4,7 +4,6 @@ import Image from "next/image";
 import { ClerkProvider, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { ModeToggle } from "./ModeToggle";
-import { TextHoverEffect3D } from "./TextHover";
 import { ContainerTextFlip } from "@/components/ui/container-text-flip";
 
 export default async function Navbar() {
@@ -35,7 +34,6 @@ export default async function Navbar() {
           />{" "}
           {/* <h1 className="font-bold text-2xl">{"KEEPTANG > เก็บตัง"}</h1> */}
           <ContainerTextFlip />
-          <TextHoverEffect3D />
         </Link>
 
         {/* function */}
