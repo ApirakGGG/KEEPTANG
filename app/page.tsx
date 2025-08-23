@@ -9,7 +9,7 @@ import { TextRevealCardPreview } from "./Mycomponents/TextRevealCardPreview";
 export default async function Home() {
   const user = await currentUser();
   return (
-    <div className="relative h-[70vh] py-15 px-20">
+    <div className="relative h-[70vh] py-5 px-20">
       {/* 3D BG inset-0 */}
       <div className="absolute inset-0 -z-10 mt-10 ">
         <ThreeDMarqueePage />{" "}
