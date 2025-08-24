@@ -24,15 +24,15 @@ const FooterContent = () => {
     { id: 3, icon: HandCoins, text: "กำหนดเป้าหมาย", sub: "การออม" },
   ];
   return (
-    <div className="grid grid-cols-2 gap-5 space-x-28 justify-around mt-5  md:flex md:flex-row ">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-5 px-6">
       {content.map((item) => (
         <div
           key={item.id}
-          className="h-[25vh] w-full flex items-center justify-center  "
+          className="flex items-center justify-center"
         >
           {/* 3D footer */}
           <PinContainer title="KEEPTANG > เก็บตัง">
-            <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 md:w-[30vh] h-[10rem] rounded-xl">
+            <div className="flex flex-col p-4 tracking-tight text-slate-100/50 w-[18rem] h-[10rem] rounded-xl">
               <div className="flex flex-col justify-center items-center text-base font-normal">
                 <h3 className="max-w-xs font-bold  text-base text-slate-800 dark:text-white">
                   {item.text}

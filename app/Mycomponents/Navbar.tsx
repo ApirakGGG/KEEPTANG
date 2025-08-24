@@ -16,11 +16,9 @@ export default async function Navbar() {
     { id: 4, label: "ตั้งค่า", path: "/manage" },
   ];
 
-  // console.log("Data", user);
-  // console.log("DataUserID", userId);
   return (
     <ClerkProvider>
-      <div className="flex justify-between px-5 h-[120px] items-center rounded-lg">
+      <nav className="flex justify-between px-5 h-[100px] items-center rounded-lg">
         {/* Topic content */}
 
         <Link href={"/"} className="flex items-center">
@@ -31,43 +29,38 @@ export default async function Navbar() {
             height={150}
             className="object-cover"
           />{" "}
-          {/* <h1 className="font-bold text-2xl">{"KEEPTANG > เก็บตัง"}</h1> */}
           <ContainerTextFlip />
         </Link>
 
-        {/* function */}
-        <div className="flex gap-5 items-center">
-          <div className="flex flex-row space-x-5 md:block">
-            {user &&
-              Navlink.map((nav) => (
-                <Link
-                  className="font-semibold px-3 rounded-lg hover:underline"
-                  href={nav.path}
-                  key={nav.id}
-                >
-                  {nav.label}
-                </Link>
-              ))}
-            {user?.publicMetadata.role === "admin" && (
-              <>
-                <Link
-                  className="font-semibold px-3 rounded-lg hover:underline"
-                  href="/adminDashboard"
-                >
-                  Admin
-                </Link>
-              </>
-            )}
-          </div>
+        {/* Desktop menu */}
+        <div className="hidden md:flex gap-6 items-center">
+          {user &&
+            Navlink.map((nav) => (
+              <Link
+                key={nav.id}
+                href={nav.path}
+                className="font-semibold px-3 py-1 rounded-lg hover:underline"
+              >
+                {nav.label}
+              </Link>
+            ))}
+
+          {user?.publicMetadata?.role === "admin" && (
+            <Link
+              href="/adminDashboard"
+              className="font-semibold px-3 py-1 rounded-lg hover:underline "
+            >
+              Admin
+            </Link>
+          )}
 
           {/* user */}
-
-          <header className="flex justify-end items-center p-4 gap-4 h-16 cursor-pointer">
+          <header className="flex items-center p-4 gap-4 cursor-pointer">
             {user ? (
               <>
                 <SignedIn>
                   <UserButton />
-                  <p className="font-bold">{user?.fullName}</p>
+                  <p className="font-bold hidden sm:block">{user?.fullName}</p>
                 </SignedIn>
               </>
             ) : (
@@ -84,11 +77,9 @@ export default async function Navbar() {
             )}
           </header>
           {/* MODE TOGGLE */}
-          <div className=" flex items-center justify-end">
-            <ModeToggle />
-          </div>
+          <ModeToggle />
         </div>
-      </div>
+      </nav>
     </ClerkProvider>
   );
 }

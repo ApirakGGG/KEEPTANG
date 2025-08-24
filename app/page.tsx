@@ -14,13 +14,14 @@ export default async function Home() {
       <div className="absolute inset-0 -z-10 mt-10 ">
         <ThreeDMarqueePage />{" "}
       </div>
-      <div className=" flex flex-col md:flex-row gap-2 justify-between  ">
-        <div>
+      <div className=" flex flex-col  md:items-start items-center md:flex-row gap-2 justify-between  ">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left">
           {/*TextRevealCardPreview */}
           <TextRevealCardPreview />
+
           {/* button */}
-          <div className="space-x-3">
-            <button className="mt-7 px-5 py-3 md:text-2xl rounded-2xl border font-bold text-white bg-blue-500 dark:bg-neutral-800">
+          <div className="space-x-3 mt-6 flex flex-wrap justify-center md:justify-start">
+            <button className="mt-7 px-5 py-3 md:text-xl lg:text-2xl rounded-2xl border font-bold text-white bg-blue-500 dark:bg-neutral-800">
               ใช้งานฟรี
             </button>
 
@@ -28,20 +29,13 @@ export default async function Home() {
             {user ? (
               <></>
             ) : (
-              <button className="mt-7 px-5 py-3 md:text-2xl rounded-2xl border font-bold text-white bg-green-500 hover:bg-green-600">
+              <button className="mt-7 px-5 py-3 md:text-xl lg:text-2xl rounded-2xl border font-bold text-white bg-green-500 hover:bg-green-600">
                 {/* SignIn */}
                 <Link href={"/sign-in"}>เริ่มต้นใช้งาน</Link>
               </button>
             )}
           </div>
         </div>
-        {/* <Image
-          src={"/banner.png"}
-          alt="profile"
-          width={500}
-          height={500}
-          className="object-cover rounded-2xl size-56 lg:size-max opacity-90 "
-        /> */}
       </div>
       {/* Footer Content */}
       <FooterContent />
