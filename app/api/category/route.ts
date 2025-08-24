@@ -11,10 +11,13 @@ export async function GET(req: Request) {
   }
 
   const { searchParams } = new URL(req.url);
-  const paramsType = searchParams.get("type");
+  const rawType = searchParams.get("type") || null;
+  const paramsType = rawType === "" ? null : rawType;
+  console.log("paramsType:", paramsType);
 
   const validator = z.enum(["income", "expense"]).nullable();
   const queryParams = validator.safeParse(paramsType);
+
   if (!queryParams.success) {
     return Response.json(queryParams.error, {
       status: 400,
@@ -28,8 +31,8 @@ export async function GET(req: Request) {
       ...(type && { type }), //รวมtypeไว้ในตัวกรองหากมีการกำหนดไว้
     },
     orderBy: {
-        name: "asc"
-    }
+      name: "asc",
+    },
   });
-return Response.json(categories)
+  return Response.json(categories);
 }

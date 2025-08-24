@@ -74,6 +74,54 @@ export default function Transaction_Dialog({ trigger, type }: Props) {
     setCurrecyUser(userCurrency);
   }, [userSetting.data]);
 
+    // //pull qurey
+    // const queryClient = useQueryClient();
+  
+    // //FormData & form reset
+    // const { mutate, isPending } = useMutation({
+    //   mutationFn: CreateCategoryForm,
+    //   onSuccess: async (data: Category) => {
+    //     form.reset({
+    //       name: "",
+    //       icon: "",
+    //       type,
+    //     });
+    //     // format formatsuccess
+    //     const formatsuccess = () => {
+    //       const time = new Date(data.createAt).toDateString();
+    //       const summdata = `${data.name} ${data.icon} วันที่: ${time}`;
+    //       return summdata;
+    //     };
+    //     toast.success(`สร้างหมวดหมู่ ${formatsuccess()} สำเร็จ`, {
+    //       id: "create-category",
+    //     });
+  
+    //     await queryClient.invalidateQueries({
+    //       queryKey: ["categories"],
+    //     });
+  
+    //     setOpen((prev) => !prev);
+    //     console.log("สร้างหมวดหมู่สำเร็จ", formatsuccess());
+    //   },
+    //   onError: () => {
+    //     toast.error(`เกิดข้อผิดพลาดโปรดลองอีกครั้ง`, {
+    //       id: "create-category",
+    //     });
+    //   },
+    // });
+  
+    // //onsubmit
+    // const onSubmit = useCallback(
+    //   (value: CreateCategoryType) => {
+    //     toast.loading("กำลังสร้างหมวดหมู่!!", {
+    //       id: "create-category",
+    //     });
+    //     // set mutate from FormData & form reset
+    //     mutate(value);
+    //   },
+    //   [mutate]
+    // );
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -162,6 +210,7 @@ export default function Transaction_Dialog({ trigger, type }: Props) {
                     <FormLabel>Category</FormLabel>
                     <FormControl>
                       <CategoryPicker type={type}  {...field} />
+                      {/* 2:07:05 */}
                     </FormControl>
                     <FormDescription>
                       {cn(
@@ -189,6 +238,13 @@ export default function Transaction_Dialog({ trigger, type }: Props) {
               ยกเลิก
             </Button>
           </DialogClose>
+           <Button
+              variant={"outline"}
+              type="button"
+              onClick={() => {}}
+            >
+              บันทึก
+            </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

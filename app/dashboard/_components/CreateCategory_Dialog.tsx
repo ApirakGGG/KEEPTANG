@@ -26,19 +26,25 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/components/ui/popover";
-import { CircleOff, PlusSquare, X } from "lucide-react";
-import { useState } from "react";
+import { CircleOff, Loader2, PlusSquare, X } from "lucide-react";
+import { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 import { DialogClose } from "@radix-ui/react-dialog";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { CreateCategoryForm } from "../_action/categories";
+import { Category } from "@/lib/generated/prisma";
+import { toast } from "sonner";
 
 interface Props {
   type: TransactionType;
+  OnsuccessCallback: (categories: Category) => void;
 }
 
-export default function CreateCategoryDialog({ type }: Props) {
+export default function CreateCategoryDialog({ type, OnsuccessCallback }: Props) {
   const [open, setOpen] = useState(false);
+  //form
   const form = useForm<CreateCategoryType>({
     resolver: zodResolver(CreateCategory),
     defaultValues: {
@@ -52,6 +58,55 @@ export default function CreateCategoryDialog({ type }: Props) {
     if (type === "income") return "รายได้";
     if (type === "expense") return "รายจ่าย";
   };
+
+  //pull qurey
+  const queryClient = useQueryClient();
+
+  //FormData & form reset
+  const { mutate, isPending } = useMutation({
+    mutationFn: CreateCategoryForm,
+    onSuccess: async (data: Category) => {
+      form.reset({
+        name: "",
+        icon: "",
+        type,
+      });
+      // format formatsuccess
+      const formatsuccess = () => {
+        const time = new Date(data.createAt).toDateString();
+        const summdata = `${data.name} ${data.icon} วันที่: ${time}`;
+        return summdata;
+      };
+      toast.success(`สร้างหมวดหมู่ ${formatsuccess()} สำเร็จ`, {
+        id: "create-category",
+      });
+      OnsuccessCallback(data)
+
+      await queryClient.invalidateQueries({
+        queryKey: ["categories"],
+      });
+
+      setOpen((prev) => !prev);
+      console.log("สร้างหมวดหมู่สำเร็จ", formatsuccess());
+    },
+    onError: () => {
+      toast.error(`เกิดข้อผิดพลาดโปรดลองอีกครั้ง`, {
+        id: "create-category",
+      });
+    },
+  });
+
+  //onsubmit
+  const onSubmit = useCallback(
+    (value: CreateCategoryType) => {
+      toast.loading("กำลังสร้างหมวดหมู่!!", {
+        id: "create-category",
+      });
+      // set mutate from FormData & form reset
+      mutate(value);
+    },
+    [mutate]
+  );
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -81,7 +136,7 @@ export default function CreateCategoryDialog({ type }: Props) {
         <DialogDescription>เลือกกลุ่มที่ต้องการสร้างหมวดหมู่</DialogDescription>
 
         <Form {...form}>
-          <form className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             {/* categories */}
             <FormField
               control={form.control}
@@ -185,10 +240,22 @@ export default function CreateCategoryDialog({ type }: Props) {
                 form.reset();
               }}
             >
-              ยกเลิก 
+              ยกเลิก
             </Button>
-            {/* 1:51:39 */}
           </DialogClose>
+          <Button
+            variant={"outline"}
+            type="button"
+            onClick={form.handleSubmit(onSubmit)}
+            disabled={isPending}
+          >
+            {/* ispending checking */}
+            {isPending ? (
+              <Loader2 className="animate-spin duration-300" />
+            ) : (
+              "สร้างหมวดหมู่"
+            )}
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
