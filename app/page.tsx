@@ -9,12 +9,12 @@ import { TextRevealCardPreview } from "./Mycomponents/TextRevealCardPreview";
 export default async function Home() {
   const user = await currentUser();
   return (
-    <div className="relative h-[70vh] py-5 px-20">
+    <div className="relative h-[70vh] py-5 px-10">
       {/* 3D BG inset-0 */}
       <div className="absolute inset-0 -z-10 mt-10 ">
         <ThreeDMarqueePage />{" "}
       </div>
-      <div className=" flex flex-col md:flex-row  gap-2 justify-between  ">
+      <div className=" flex flex-col md:flex-row gap-2 justify-between  ">
         <div>
           {/*TextRevealCardPreview */}
           <TextRevealCardPreview />

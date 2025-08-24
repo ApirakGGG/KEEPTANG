@@ -20,7 +20,7 @@ export default async function Navbar() {
   // console.log("DataUserID", userId);
   return (
     <ClerkProvider>
-      <div className="flex justify-between px-20 h-[100px] items-center rounded-lg">
+      <div className="flex justify-between px-5 h-[120px] items-center rounded-lg">
         {/* Topic content */}
 
         <Link href={"/"} className="flex items-center">
@@ -36,7 +36,7 @@ export default async function Navbar() {
         </Link>
 
         {/* function */}
-        <div className="flex gap-28 items-center">
+        <div className="flex gap-5 items-center">
           <div className="flex flex-row space-x-5 md:block">
             {user &&
               Navlink.map((nav) => (

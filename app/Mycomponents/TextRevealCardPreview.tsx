@@ -5,7 +5,7 @@ import React from "react";
 
 export function TextRevealCardPreview() {
   return (
-    <div className="flex items-center justify-center opacity-75 rounded-2xl w-full">
+    <div className="flex items-center justify-center opacity-75 rounded-2xl">
       <TextRevealCard
         text=" WEBSITE จัดการรายรับ-รายจ่ายสำหรับนักศึกษา"
         revealText="พร้อมสรุปยอดและแจ้งเตือนงบประมาณ พร้อมจดบันทึกด้วยเสียงฟรี"
