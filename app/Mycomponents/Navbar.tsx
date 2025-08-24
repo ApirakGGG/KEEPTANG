@@ -33,13 +33,13 @@ export default async function Navbar() {
         </Link>
 
         {/* Desktop menu */}
-        <div className="hidden md:flex gap-6 items-center">
+        <div className="hidden md:flex gap-3 items-center">
           {user &&
             Navlink.map((nav) => (
               <Link
                 key={nav.id}
                 href={nav.path}
-                className="font-semibold px-3 py-1 rounded-lg hover:underline"
+                className="font-semibold px-1 py-1 rounded-lg hover:underline"
               >
                 {nav.label}
               </Link>
@@ -48,7 +48,7 @@ export default async function Navbar() {
           {user?.publicMetadata?.role === "admin" && (
             <Link
               href="/adminDashboard"
-              className="font-semibold px-3 py-1 rounded-lg hover:underline "
+              className="font-semibold px-1 py-1 rounded-lg hover:underline "
             >
               Admin
             </Link>
@@ -60,7 +60,7 @@ export default async function Navbar() {
               <>
                 <SignedIn>
                   <UserButton />
-                  <p className="font-bold hidden sm:block">{user?.fullName}</p>
+                  <p className="font-bold hidden md:hidden sm:hidden">{user?.fullName}</p>
                 </SignedIn>
               </>
             ) : (

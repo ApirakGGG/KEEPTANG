@@ -28,7 +28,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body className={`${poppines.className} antialiased`}>
-          <main className="relative min-h-screen overflow-auto">
+          <main className="relative h-[100vh] w-full overflow-auto">
             <Toaster position="bottom-right" richColors />
             <ThemeProvider
               attribute={"class"}
@@ -38,7 +38,7 @@ export default function RootLayout({
             >
               <Navbar />
               {/* Container Responsive */}
-              <div className="px-4 sm:px-6 lg:px-8 py-4 flex-1">
+              <div className="w-full ">
                 {children}
               </div>
             </ThemeProvider>
