@@ -20,7 +20,7 @@ export interface ContainerTextFlipProps {
 }
 
 export function ContainerTextFlip({
-  words = ["KEEPTANG"],
+  words = ["KEEPTANG", "KEEPTANG > เก็บตัง"],
   interval = 3000,
   className,
   textClassName,

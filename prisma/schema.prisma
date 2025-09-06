@@ -46,21 +46,21 @@ model MonthHistory {
   userId  String
   day     Int
   month   Int
-  yaer    Int
+  year    Int
   income  Float
   expense Float
 
-  @@id([day, month, yaer, userId])
+  @@id([day, month, year, userId])
 }
 
-model YaerHistory {
+model YearHistory {
   userId  String
   month   Int
-  yaer    Int
+  year    Int
   income  Float
   expense Float
 
-  @@id([month, yaer, userId])
+  @@id([month, year, userId])
 }
 
 enum Role {

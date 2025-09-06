@@ -1,6 +1,6 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { TransactionType } from "@/lib/transactionType";
 import {
@@ -24,11 +24,18 @@ import { cn } from "@/lib/utils";
 
 interface Props {
   type: TransactionType;
+  onChange: (value: string) => void
 }
 
-export default function CategoryPicker({ type }: Props) {
+export default function CategoryPicker({ type , onChange }: Props) {
   const [open, setOpen] = useState(false); //open popover
   const [value, setValue] = useState("");
+
+  //change category 
+  useEffect(() => {
+    if(!value) return;
+    onChange(value);//เปลี่ยน category
+  }, [value, onChange])
 
   //query data
   const categoriesQuery = useQuery({
@@ -39,7 +46,7 @@ export default function CategoryPicker({ type }: Props) {
       return res.data;
     },
   });
-  console.log("Qurey", categoriesQuery.data);
+  // console.log("Qurey", categoriesQuery.data);
 
   //view when selectedCategories Input
   const selectedCategories = categoriesQuery.data?.find(
@@ -55,7 +62,7 @@ export default function CategoryPicker({ type }: Props) {
     [setValue, setOpen]
   );
 
-  console.log("selectedCategories", selectedCategories);
+  // console.log("selectedCategories", selectedCategories);
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
