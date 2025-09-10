@@ -4,6 +4,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import React from "react";
 import Transaction_Dialog from "./_components/Transaction_Dialog";
+import Overview from "./_components/Overview";
 
 export default async function Dashboard() {
   const prisma = new PrismaClient();
@@ -64,6 +65,7 @@ export default async function Dashboard() {
           </div>
         </div>
       </div>
+      <Overview userSetting={userSetting} />
     </div>
   );
 }
