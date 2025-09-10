@@ -48,7 +48,7 @@ export default function StatusCard({ from, to, userSetting }: Props) {
         <StatCard
           format={format}
           value={income}
-          title={"INCOME"}
+          title={"รายได้"}
           icon={
             <TrendingUp
               className="h-12 w-12 items-center rounded-lg
@@ -62,7 +62,7 @@ export default function StatusCard({ from, to, userSetting }: Props) {
         <StatCard
           format={format}
           value={expense}
-          title={"EXPENSE"}
+          title={"รายจ่าย"}
           icon={
             <TrendingDown
               className="h-12 w-12 items-center rounded-lg
@@ -76,7 +76,7 @@ export default function StatusCard({ from, to, userSetting }: Props) {
         <StatCard
           format={format}
           value={balance}
-          title={"BALANCE"}
+          title={"ยอดเงินคงเหลือ"}
           icon={
             <Wallet
               className="h-12 w-12 items-center rounded-lg

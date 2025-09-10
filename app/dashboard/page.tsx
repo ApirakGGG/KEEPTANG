@@ -41,7 +41,7 @@ export default async function Dashboard() {
               trigger={
                 <Button
                   variant={"outline"}
-                  className="px-5 py-1 font-bold cursor-pointer border-yellow-500 bg-slate-800 hover:bg-emerald-500 text-green-500 hover:text-green-700"
+                  className="px-5 py-1 font-bold cursor-pointer border-yellow-500  hover:bg-green-300 text-green-500 hover:text-green-700"
                 >
                   รายได้
                 </Button>
@@ -54,7 +54,7 @@ export default async function Dashboard() {
               trigger={
                 <Button
                   variant={"outline"}
-                  className="px-5 py-1 font-bold cursor-pointer border-red-500 bg-slate-800 hover:bg-emerald-500 text-red-500 hover:text-red-700"
+                  className="px-5 py-1 font-bold cursor-pointer border-red-500  hover:bg-red-300 text-red-500 hover:text-red-700"
                 >
                   รายจ่าย
                 </Button>

@@ -53,7 +53,7 @@ export default function UserManage() {
 
   console.log("UserList", userList);
 
-  const paginationModel = { page: 0, pageSize: 5 };
+  const paginationModel = { page: 0, pageSize: 20 };
 
   return (
     <Paper sx={{ height: "100%", width: "100%" }}>
@@ -61,7 +61,7 @@ export default function UserManage() {
         rows={rows}
         columns={columns}
         initialState={{ pagination: { paginationModel } }}
-        pageSizeOptions={[5, 10]}
+        pageSizeOptions={[20]}
         checkboxSelection
         sx={{ border: 0 }}
       />
