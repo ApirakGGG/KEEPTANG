@@ -9,7 +9,7 @@ import { getFormatterForCurrency } from "@/lib/getFormatterForCurrency";
 import SkeletonWrapper from "@/app/Mycomponents/SkeletonWrapper";
 import { TrendingDown, TrendingUp, Wallet } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import CountUp from "react-countup";
+import CountUp from 'react-countup';
 
 interface Props {
   from: Date;
