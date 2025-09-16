@@ -18,7 +18,7 @@ interface Props {
 }
 
 export default function StatusCard({ from, to, userSetting }: Props) {
-  //query
+  //query statusQuery
   const statusQuery = useQuery<GetBalanceStatusResponseType>({
     queryKey: ["overview", "status", from, to],
     queryFn: async () => {

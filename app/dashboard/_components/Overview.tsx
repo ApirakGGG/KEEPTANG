@@ -7,6 +7,7 @@ import { differenceInDays, startOfMonth } from "date-fns";
 import { useState } from "react";
 import { toast } from "sonner";
 import StatusCard from "./StatusCard";
+import CategoryStas from "./CategoryStas";
 
 export default function Overiew({ userSetting }: { userSetting: UserSetting }) {
   const [Daterange, setDaterange] = useState<{ from: Date; to: Date }>({
@@ -45,7 +46,9 @@ export default function Overiew({ userSetting }: { userSetting: UserSetting }) {
       <div className="flex w-full flex-col gap-2">
         <StatusCard userSetting={userSetting} from={Daterange.from} to={Daterange.to}/>
       </div>
-      {/* 2:52:13 */}
+
+      {/* CategoryStas */}
+      <CategoryStas from={Daterange.from} to={Daterange.to} userSetting={userSetting} />
     </>
   );
 }

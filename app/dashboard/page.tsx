@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 import Transaction_Dialog from "./_components/Transaction_Dialog";
 import Overview from "./_components/Overview";
+import History from "./_components/History"
 
 export default async function Dashboard() {
   const prisma = new PrismaClient();
@@ -66,6 +67,7 @@ export default async function Dashboard() {
         </div>
       </div>
       <Overview userSetting={userSetting} />
+      <History userSetting={userSetting} />
     </div>
   );
 }
