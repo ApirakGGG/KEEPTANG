@@ -1,10 +1,10 @@
 import Image from "next/image";
 import FooterContent from "./Mycomponents/FooterContent";
 import { currentUser } from "@clerk/nextjs/server";
-import { LogoPage } from "./Mycomponents/Logo";
 import Link from "next/link";
 import { ThreeDMarqueePage } from "./Background3D/Background3D";
 import { TextRevealCardPreview } from "./Mycomponents/TextRevealCardPreview";
+import { HelpDialog } from "./Mycomponents/Help_Page";
 
 export default async function Home() {
   const user = await currentUser();
@@ -20,7 +20,7 @@ export default async function Home() {
           <TextRevealCardPreview />
 
           {/* button */}
-          <div className="space-x-3 mt-2 flex flex-wrap justify-center md:justify-start">
+          <div className="space-x-3 mt-5 flex flex-wrap justify-center md:justify-start">
             {/* ถ้ามี session hide user button */}
             {user ? (
               <></>
@@ -35,11 +35,13 @@ export default async function Home() {
                 </button>
               </>
             )}
+            < HelpDialog />
           </div>
         </div>
       </div>
       {/* Footer Content */}
       <FooterContent />
+     
     </div>
   );
 }

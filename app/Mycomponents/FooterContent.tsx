@@ -24,7 +24,7 @@ const FooterContent = () => {
     { id: 3, icon: HandCoins, text: "กำหนดเป้าหมาย", sub: "การออม" },
   ];
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 -mt-12 px-3 md:px-1 lg:px-1">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 -mt-2 px-3 md:px-1 lg:px-1">
       {content.map((item) => (
         <div
           key={item.id}
