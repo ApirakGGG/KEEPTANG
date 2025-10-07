@@ -27,7 +27,7 @@ import {
   PopoverContent,
 } from "@/components/ui/popover";
 import { CircleOff, Loader2, PlusSquare, X } from "lucide-react";
-import { useCallback, useState } from "react";
+import { ReactNode, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
@@ -40,9 +40,14 @@ import { toast } from "sonner";
 interface Props {
   type: TransactionType;
   OnsuccessCallback: (categories: Category) => void;
+  trigger?: ReactNode;
 }
 
-export default function CreateCategoryDialog({ type, OnsuccessCallback }: Props) {
+export default function CreateCategoryDialog({
+  trigger,
+  type,
+  OnsuccessCallback,
+}: Props) {
   const [open, setOpen] = useState(false);
   //form
   const form = useForm<CreateCategoryType>({
@@ -80,7 +85,7 @@ export default function CreateCategoryDialog({ type, OnsuccessCallback }: Props)
       toast.success(`สร้างหมวดหมู่ ${formatsuccess()} สำเร็จ`, {
         id: "create-category",
       });
-      OnsuccessCallback(data)
+      OnsuccessCallback(data);
 
       await queryClient.invalidateQueries({
         queryKey: ["categories"],
@@ -111,13 +116,17 @@ export default function CreateCategoryDialog({ type, OnsuccessCallback }: Props)
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button
-          variant={"ghost"}
-          className="flex border-separate items-center justify-start rounded-none border-b px-3 py-3"
-        >
-          <PlusSquare className="mr-2 h-4 w-4" />
-          สร้าง
-        </Button>
+        {trigger ? (
+          trigger
+        ) : (
+          <Button
+            variant={"ghost"}
+            className="flex border-separate items-center justify-start rounded-none border-b px-3 py-3"
+          >
+            <PlusSquare className="mr-2 h-4 w-4" />
+            สร้าง
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogTitle>

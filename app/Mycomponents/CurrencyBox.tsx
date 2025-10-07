@@ -42,11 +42,11 @@ export function CurrencyBox() {
 
   React.useEffect(() => {
     if (!userSetting.data) return;
-    console.log("userSetting.data.currency", userSetting.data.currency);
-    console.log(
-      "Currencies",
-      Currencies.map((c) => c.label)
-    );
+    // console.log("userSetting.data.currency", userSetting.data.currency);
+    // console.log(
+    //   "Currencies",
+    //   Currencies.map((c) => c.label)
+    // );
     const userCurrency =
       Currencies.find(
         (currency) => currency.value === userSetting.data.currency
@@ -95,7 +95,7 @@ export function CurrencyBox() {
     [mutation]
   );
 
-  console.log("userSetting", userSetting);
+  // console.log("userSetting", userSetting);
 
   if (isDesktop) {
     return (

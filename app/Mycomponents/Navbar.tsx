@@ -11,7 +11,7 @@ export default async function Navbar() {
 
   const Navlink = [
     { id: 1, label: "เป้าหมายการออม", path: "/" },
-    { id: 2, label: " รายรับ | รายจ่าย", path: "/" },
+    { id: 2, label: " รายรับ | รายจ่าย", path: "/transaction" },
     { id: 3, label: " สรุปรายรับรายจ่าย", path: "/dashboard" },
     { id: 4, label: "ตั้งค่า", path: "/manage" },
   ];

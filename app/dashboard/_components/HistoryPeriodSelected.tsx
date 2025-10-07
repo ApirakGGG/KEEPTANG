@@ -59,7 +59,7 @@ export default function HistoryPeriodSelected({
             year={historyPeriod.data || []}
           />
         </SkeletonWrapper>
-        {/* 3:48:05 */}
+        
 
         {timeframe === "month" && (
           //  {/* Month Selected */}
