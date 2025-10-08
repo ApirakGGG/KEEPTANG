@@ -15,11 +15,12 @@ export function HelpDialog() {
     <Dialog>
       {/* ปุ่มกดเปิด Help */}
       <DialogTrigger asChild>
-        <button
-          className="px-5 py-2 rounded-2xl border md:text-xl lg:text-2xl font-bold text-white bg-blue-500 dark:bg-neutral-800"
-        >
+         <Button
+                  variant="outline"
+                  className="flex items-center gap-2 text-sm hover:bg-primary hover:text-white transition-all"
+                >
           Help
-        </button>
+        </Button>
       </DialogTrigger>
 
       {/* เนื้อหาภายใน Dialog */}
